@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projekt-Semestralny-Klasy", "Projekt-Semestralny-Klasy\Projekt-Semestralny-Klasy.csproj", "{EB5DA44A-3EE3-428F-9186-4E36BBD89894}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB5DA44A-3EE3-428F-9186-4E36BBD89894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB5DA44A-3EE3-428F-9186-4E36BBD89894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB5DA44A-3EE3-428F-9186-4E36BBD89894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB5DA44A-3EE3-428F-9186-4E36BBD89894}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A09EE81D-D966-489B-B4F7-62466D738E53}
+	EndGlobalSection
+EndGlobal
