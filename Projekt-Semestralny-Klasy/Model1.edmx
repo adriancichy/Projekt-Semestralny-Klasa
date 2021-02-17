@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SzkolaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klasa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rocznik" Type="int" Nullable="false" />
+          <Property Name="Litera" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Id_Wychowawcy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocena">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocena" Type="int" Nullable="false" />
+          <Property Name="Id_Ucznia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uczen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Klasy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Wychowawca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Klasa_Wychowawca">
+          <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wychowawca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klasa">
+              <PropertyRef Name="Id_Wychowawcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocena_Uczen">
+          <End Role="Uczen" Type="Self.Uczen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ocena" Type="Self.Ocena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uczen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ocena">
+              <PropertyRef Name="Id_Ucznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uczen_Klasa">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Uczen">
+              <PropertyRef Name="Id_Klasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wychowawca_Wychowawca">
+          <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
+          <End Role="Wychowawca1" Type="Self.Wychowawca" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wychowawca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wychowawca1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SzkolaModelStoreContainer">
+          <EntitySet Name="Klasa" EntityType="Self.Klasa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocena" EntityType="Self.Ocena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uczen" EntityType="Self.Uczen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wychowawca" EntityType="Self.Wychowawca" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Klasa_Wychowawca" Association="Self.FK_Klasa_Wychowawca">
+            <End Role="Wychowawca" EntitySet="Wychowawca" />
+            <End Role="Klasa" EntitySet="Klasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocena_Uczen" Association="Self.FK_Ocena_Uczen">
+            <End Role="Uczen" EntitySet="Uczen" />
+            <End Role="Ocena" EntitySet="Ocena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uczen_Klasa" Association="Self.FK_Uczen_Klasa">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="Uczen" EntitySet="Uczen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wychowawca_Wychowawca" Association="Self.FK_Wychowawca_Wychowawca">
+            <End Role="Wychowawca" EntitySet="Wychowawca" />
+            <End Role="Wychowawca1" EntitySet="Wychowawca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SzkolaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klasa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rocznik" Type="Int32" Nullable="false" />
+          <Property Name="Litera" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Id_Wychowawcy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Wychowawca" Relationship="Self.FK_Klasa_Wychowawca" FromRole="Klasa" ToRole="Wychowawca" />
+          <NavigationProperty Name="Uczen" Relationship="Self.FK_Uczen_Klasa" FromRole="Klasa" ToRole="Uczen" />
+        </EntityType>
+        <EntityType Name="Ocena">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocena1" Type="Int32" Nullable="false" />
+          <Property Name="Id_Ucznia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Uczen" Relationship="Self.FK_Ocena_Uczen" FromRole="Ocena" ToRole="Uczen" />
+        </EntityType>
+        <EntityType Name="Uczen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id_Klasy" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Klasa" Relationship="Self.FK_Uczen_Klasa" FromRole="Uczen" ToRole="Klasa" />
+          <NavigationProperty Name="Ocena" Relationship="Self.FK_Ocena_Uczen" FromRole="Uczen" ToRole="Ocena" />
+        </EntityType>
+        <EntityType Name="Wychowawca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Klasa" Relationship="Self.FK_Klasa_Wychowawca" FromRole="Wychowawca" ToRole="Klasa" />
+          <NavigationProperty Name="Wychowawca1" Relationship="Self.FK_Wychowawca_Wychowawca" FromRole="Wychowawca" ToRole="Wychowawca1" />
+          <NavigationProperty Name="Wychowawca2" Relationship="Self.FK_Wychowawca_Wychowawca" FromRole="Wychowawca1" ToRole="Wychowawca" />
+        </EntityType>
+        <Association Name="FK_Klasa_Wychowawca">
+          <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Wychowawca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klasa">
+              <PropertyRef Name="Id_Wychowawcy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uczen_Klasa">
+          <End Role="Klasa" Type="Self.Klasa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klasa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Uczen">
+              <PropertyRef Name="Id_Klasy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocena_Uczen">
+          <End Role="Uczen" Type="Self.Uczen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ocena" Type="Self.Ocena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uczen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ocena">
+              <PropertyRef Name="Id_Ucznia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Wychowawca_Wychowawca">
+          <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
+          <End Role="Wychowawca1" Type="Self.Wychowawca" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Wychowawca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Wychowawca1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SzkolaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klasa" EntityType="Self.Klasa" />
+          <EntitySet Name="Ocena" EntityType="Self.Ocena" />
+          <EntitySet Name="Uczen" EntityType="Self.Uczen" />
+          <EntitySet Name="Wychowawca" EntityType="Self.Wychowawca" />
+          <AssociationSet Name="FK_Klasa_Wychowawca" Association="Self.FK_Klasa_Wychowawca">
+            <End Role="Wychowawca" EntitySet="Wychowawca" />
+            <End Role="Klasa" EntitySet="Klasa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uczen_Klasa" Association="Self.FK_Uczen_Klasa">
+            <End Role="Klasa" EntitySet="Klasa" />
+            <End Role="Uczen" EntitySet="Uczen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocena_Uczen" Association="Self.FK_Ocena_Uczen">
+            <End Role="Uczen" EntitySet="Uczen" />
+            <End Role="Ocena" EntitySet="Ocena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Wychowawca_Wychowawca" Association="Self.FK_Wychowawca_Wychowawca">
+            <End Role="Wychowawca" EntitySet="Wychowawca" />
+            <End Role="Wychowawca1" EntitySet="Wychowawca" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SzkolaModelStoreContainer" CdmEntityContainer="SzkolaEntities">
+          <EntitySetMapping Name="Klasa">
+            <EntityTypeMapping TypeName="SzkolaModel.Klasa">
+              <MappingFragment StoreEntitySet="Klasa">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rocznik" ColumnName="Rocznik" />
+                <ScalarProperty Name="Litera" ColumnName="Litera" />
+                <ScalarProperty Name="Id_Wychowawcy" ColumnName="Id_Wychowawcy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocena">
+            <EntityTypeMapping TypeName="SzkolaModel.Ocena">
+              <MappingFragment StoreEntitySet="Ocena">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ocena1" ColumnName="Ocena" />
+                <ScalarProperty Name="Id_Ucznia" ColumnName="Id_Ucznia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uczen">
+            <EntityTypeMapping TypeName="SzkolaModel.Uczen">
+              <MappingFragment StoreEntitySet="Uczen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Id_Klasy" ColumnName="Id_Klasy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wychowawca">
+            <EntityTypeMapping TypeName="SzkolaModel.Wychowawca">
+              <MappingFragment StoreEntitySet="Wychowawca">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
