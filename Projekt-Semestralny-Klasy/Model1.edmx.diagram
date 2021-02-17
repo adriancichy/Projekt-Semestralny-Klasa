@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fc4cba8800f9495abbb9bb7463e73458" Name="Diagram1">
+      <Diagram DiagramId="827e63f757284d16992e60c44429ec74" Name="Diagram1">
         <EntityTypeShape EntityType="SzkolaModel.Klasa" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SzkolaModel.Ocena" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SzkolaModel.Uczen" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
@@ -12,7 +12,6 @@
         <AssociationConnector Association="SzkolaModel.FK_Klasa_Wychowawca" ManuallyRouted="false" />
         <AssociationConnector Association="SzkolaModel.FK_Uczen_Klasa" ManuallyRouted="false" />
         <AssociationConnector Association="SzkolaModel.FK_Ocena_Uczen" ManuallyRouted="false" />
-        <AssociationConnector Association="SzkolaModel.FK_Wychowawca_Wychowawca" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

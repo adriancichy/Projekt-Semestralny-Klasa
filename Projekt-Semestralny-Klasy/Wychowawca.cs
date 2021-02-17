@@ -7,26 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projekt_Semestralny_Klasy
+namespace Projekt_Szkola
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Wychowawca
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Wychowawca()
-        {
-            this.Klasa = new HashSet<Klasa>();
-        }
-    
         public int Id { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Klasa> Klasa { get; set; }
-        public virtual Wychowawca Wychowawca1 { get; set; }
-        public virtual Wychowawca Wychowawca2 { get; set; }
     }
 }

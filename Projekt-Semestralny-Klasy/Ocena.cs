@@ -7,17 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projekt_Semestralny_Klasy
+namespace Projekt_Szkola
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Ocena
     {
+        /// <summary>
+        /// Identyfikator oceny
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Wartoœæ liczbowa oceny
+        /// </summary>
         public int Ocena1 { get; set; }
+        /// <summary>
+        /// Identyfikator ucznia, który uzyska³ ocenê
+        /// </summary>
         public int Id_Ucznia { get; set; }
-    
-        public virtual Uczen Uczen { get; set; }
+
+        /// <summary>
+        /// Na potrzeby wyœwietlania oceny w liœcie ocen ucznia.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Ocena1.ToString();
+        }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projekt_Semestralny_Klasy
+namespace Projekt_Szkola
 {
     using System;
     using System.Collections.Generic;
@@ -20,13 +20,36 @@ namespace Projekt_Semestralny_Klasy
             this.Ocena = new HashSet<Ocena>();
         }
     
+        /// <summary>
+        /// Identyfikator ucznia
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Imiê ucznia
+        /// </summary>
         public string Imie { get; set; }
+        /// <summary>
+        /// Nazwisko ucznia
+        /// </summary>
         public string Nazwisko { get; set; }
+        /// <summary>
+        /// Identyfikator klasy, do której uczeñ nale¿y
+        /// </summary>
         public int Id_Klasy { get; set; }
     
-        public virtual Klasa Klasa { get; set; }
+        /// <summary>
+        /// Kolekcja ocen ucznia.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocena> Ocena { get; set; }
+
+        /// <summary>
+        /// Nadpisano na potrzebê wyœwietlania ucznia w liœcie wszystkich uczniów zadanej klasy.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Imie + " " + Nazwisko;
+        }
     }
 }

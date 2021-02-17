@@ -136,7 +136,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Ocena1" Type="Int32" Nullable="false" />
           <Property Name="Id_Ucznia" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Uczen" Relationship="Self.FK_Ocena_Uczen" FromRole="Ocena" ToRole="Uczen" />
         </EntityType>
         <EntityType Name="Uczen">
           <Key>
@@ -146,7 +145,6 @@
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Id_Klasy" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Klasa" Relationship="Self.FK_Uczen_Klasa" FromRole="Uczen" ToRole="Klasa" />
           <NavigationProperty Name="Ocena" Relationship="Self.FK_Ocena_Uczen" FromRole="Uczen" ToRole="Ocena" />
         </EntityType>
         <EntityType Name="Wychowawca">
@@ -156,9 +154,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Klasa" Relationship="Self.FK_Klasa_Wychowawca" FromRole="Wychowawca" ToRole="Klasa" />
-          <NavigationProperty Name="Wychowawca1" Relationship="Self.FK_Wychowawca_Wychowawca" FromRole="Wychowawca" ToRole="Wychowawca1" />
-          <NavigationProperty Name="Wychowawca2" Relationship="Self.FK_Wychowawca_Wychowawca" FromRole="Wychowawca1" ToRole="Wychowawca" />
         </EntityType>
         <Association Name="FK_Klasa_Wychowawca">
           <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
@@ -200,18 +195,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Wychowawca_Wychowawca">
-          <End Role="Wychowawca" Type="Self.Wychowawca" Multiplicity="1" />
-          <End Role="Wychowawca1" Type="Self.Wychowawca" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Wychowawca">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Wychowawca1">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="SzkolaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Klasa" EntityType="Self.Klasa" />
           <EntitySet Name="Ocena" EntityType="Self.Ocena" />
@@ -228,10 +211,6 @@
           <AssociationSet Name="FK_Ocena_Uczen" Association="Self.FK_Ocena_Uczen">
             <End Role="Uczen" EntitySet="Uczen" />
             <End Role="Ocena" EntitySet="Ocena" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Wychowawca_Wychowawca" Association="Self.FK_Wychowawca_Wychowawca">
-            <End Role="Wychowawca" EntitySet="Wychowawca" />
-            <End Role="Wychowawca1" EntitySet="Wychowawca" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projekt_Semestralny_Klasy
+namespace Projekt_Szkola
 {
     using System;
     using System.Collections.Generic;
@@ -20,13 +20,39 @@ namespace Projekt_Semestralny_Klasy
             this.Uczen = new HashSet<Uczen>();
         }
     
+        /// <summary>
+        /// Identyfikator klasy
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Rocznik uczniów z danej klasy
+        /// </summary>
         public int Rocznik { get; set; }
+        /// <summary>
+        /// Oznaczenie literowe klasy
+        /// </summary>
         public string Litera { get; set; }
+        /// <summary>
+        /// Identyfikator wi¹¿¹cy klasê z jej wychowawc¹
+        /// </summary>
         public int Id_Wychowawcy { get; set; }
-    
+
+        /// <summary>
+        /// Wychowawca klasy
+        /// </summary>
         public virtual Wychowawca Wychowawca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+   
+        /// Uczniowie klasy
         public virtual ICollection<Uczen> Uczen { get; set; }
+
+        /// <summary>
+        /// Metoda nadpisana do wyœwietlenia klasy w liœcie wszystkich klas.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Rocznik + " - " + Litera;
+        }
     }
 }

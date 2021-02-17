@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Projekt_Semestralny_Klasy
+namespace Projekt_Szkola
 {
     using System;
     using System.Data.Entity;
