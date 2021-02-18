@@ -78,6 +78,9 @@
     <Compile Include="Ocena.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="OknoUczniowie.xaml.cs">
+      <DependentUpon>OknoUczniowie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Uczen.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OknoUczniowie.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model1.Context.cs">

@@ -9,7 +9,7 @@ using System.Windows;
 namespace Projekt_Semestralny_Klasy
 {
     /// <summary>
-    /// Logika interakcji dla klasy App.xaml
+    /// Logika interakcji dla klasy App
     /// </summary>
     public partial class App : Application
     {

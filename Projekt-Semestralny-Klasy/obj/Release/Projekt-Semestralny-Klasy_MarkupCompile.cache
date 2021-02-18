@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\Adik\Desktop\Projekt-Semestralny-Klasa\Projekt-Semestralny-Klasy\obj\Debug\
+C:\Users\Adik\Desktop\Projekt-Semestralny-Klasa\Projekt-Semestralny-Klasy\obj\Release\
 Projekt_Semestralny_Klasy
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\Adik\Desktop\Projekt-Semestralny-Klasa\Projekt-Semestralny-Klasy\App.xaml
 229269489
 21750853300
@@ -16,5 +16,5 @@ C:\Users\Adik\Desktop\Projekt-Semestralny-Klasa\Projekt-Semestralny-Klasy\App.xa
 18-1626591347
 MainWindow.xaml;OknoUczniowie.xaml;
 
-False
+True
 

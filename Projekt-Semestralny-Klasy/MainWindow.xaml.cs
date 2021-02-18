@@ -101,6 +101,11 @@ namespace Projekt_Szkola
 
         private void PrzyciskEdytujUczniow_Click(object sender, RoutedEventArgs e)
         {
+            if (EdytowanaKlasa != null)
+            {
+                OknoUczniowie oknoUczniowie = new OknoUczniowie(EdytowanaKlasa, BazaDanych);
+                oknoUczniowie.ShowDialog();
+            }
         }
     }
 }

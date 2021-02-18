@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_Szkola"
         mc:Ignorable="d"
-        Title="Szkoła" Height="570.314" Width="800" ResizeMode="NoResize">
+        Title="Szkoła" Height="560.965" Width="800" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200*"/>
